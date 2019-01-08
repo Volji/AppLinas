@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Linas Autrement, les membres{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+
+{% block body %}
+
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(/images/background/8.jpg);">
+        <div class="auto-container">
+            <h1>Team</h1>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{{ path('home') }}">Home </a></li>
+                <li>Nos adhérents</li>
+            </ul>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Volunteer Section -->
+    <section class="volunteer-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                {% for member in members %}
+                    {% if member.userRoles.count() > 0 %}
+
+
+                        <!--Volunteer Member-->
+                        <div class="volunteer-member col-md-6 col-sm-6 col-xs-12">
+                            <div class="inner-box clearfix">
+                                <div class="image-box">
+                                    <figure class="image" style="height: 180px;"><img src="{{ member.picture }}" alt="" ></figure>
+                                </div>
+                                <div class="info-box" style="padding-top: 0; padding-bottom: 0;">
+                                    <h3 class="name">{{ member.firstname }} {{ member.lastname }}</h3>
+                                    <p>{{ member.username }}</p>
+                                    <span class="desingnation">Fonction: {{ member.job }}</span>
+                                    <p>{{ member.presentation }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <!-- End Volunteer Section -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/jquery.fancybox.js"></script>
+    <script src="/js/owl.js"></script>
+    <script src="/js/wow.js"></script>
+    <script src="/js/appear.js"></script>
+    <script src="/js/script.js"></script>
+{% endblock %}
